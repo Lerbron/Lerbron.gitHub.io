@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>mongodb基本指令 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1、数据库连接：sudo mongod2、查询显示所有数据库：show dbs3、查询显示所有集合：show collections4、创建／切换数据库：use 5、删除当前数据库：db.dropDatabase().需要切换至当前要删除的数据库6、查询数据库指定集合中的所有数据：db.collection.find()7、按条件查询数据库指定集合中的数据： db.collection.find(">
+<meta name="keywords" content="数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mongodb基本指令">
+<meta property="og:url" content="http://yoursite.com/2017/10/13/mongodb基本指令/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1、数据库连接：sudo mongod2、查询显示所有数据库：show dbs3、查询显示所有集合：show collections4、创建／切换数据库：use 5、删除当前数据库：db.dropDatabase().需要切换至当前要删除的数据库6、查询数据库指定集合中的所有数据：db.collection.find()7、按条件查询数据库指定集合中的数据： db.collection.find(">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-01T07:36:41.837Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mongodb基本指令">
+<meta name="twitter:description" content="1、数据库连接：sudo mongod2、查询显示所有数据库：show dbs3、查询显示所有集合：show collections4、创建／切换数据库：use 5、删除当前数据库：db.dropDatabase().需要切换至当前要删除的数据库6、查询数据库指定集合中的所有数据：db.collection.find()7、按条件查询数据库指定集合中的数据： db.collection.find(">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <!-- <a id="nav-search-btn" class="nav-icon" title="Search"></a> -->
+      </nav>
+      <!-- <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div> -->
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-mongodb基本指令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/13/mongodb基本指令/" class="article-date">
+  <time datetime="2017-10-13T07:57:54.000Z" itemprop="datePublished">2017-10-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      mongodb基本指令
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1、数据库连接：sudo mongod<br>2、查询显示所有数据库：show dbs<br>3、查询显示所有集合：show collections<br>4、创建／切换数据库：use <dataname><br>5、删除当前数据库：db.dropDatabase().需要切换至当前要删除的数据库<br>6、查询数据库指定集合中的所有数据：db.collection.find()<br>7、按条件查询数据库指定集合中的数据：</dataname></p>
+<pre><code>db.collection.find({&apos;name&apos;: &apos;admin&apos;})    查询name为admin的数据。
+</code></pre><p>8、创建集合：</p>
+<pre><code>db.createCollection(&apos;collectionName&apos;)
+</code></pre><p>9、删除集合：</p>
+<pre><code>db.collectionName.drop() 
+</code></pre><p>10、查询当前集合的数据条数：</p>
+<pre><code>db.collectionName.count()
+</code></pre><p>11、查询当前集合中的第一条数据：</p>
+<pre><code>db.collectionName.findOne()
+</code></pre><p>12、添加数据列：</p>
+<pre><code>db.collectionName.save()
+</code></pre><p>13、修改数据：</p>
+<pre><code>db.collectionName.update({&apos;age&apos;: 25}, {$set: {&apos;name&apos;: &apos;Lee&apos;}})  更改age为25的数据的name为Lee
+</code></pre><p>14、更新不存在时，插入数据：</p>
+<pre><code>db.collectionName.update({&apos;age&apos;: 30}, {$set: {&apos;name&apos;: &apos;bruce&apos;}}, true)
+</code></pre><p>15、更行多条数据：</p>
+<pre><code>db.collectionName.update({name: &apos;one&apos;}, {$set: {name: &apos;two&apos;}}, false, true)
+</code></pre><p>16、删除数据：</p>
+<pre><code>db.collectionName.remove({name: &apos;two&apos;})
+</code></pre><p>17、查询集合的索引：</p>
+<pre><code>db.collectionName.getIndex()
+</code></pre><p>18、创建索引：</p>
+<pre><code>db.collectionName.ensureIndex({key: &quot;text&quot;})
+db.users.ensureIndex({&apos;name&apos;: &apos;text&apos;})  // 在users的集合上创建键为name的索引
+</code></pre><p>19、获取集合的索引：db.collectionName.getIndexes()</p>
+<pre><code>db.users.getIndexes()
+
+[
+    {
+        &quot;v&quot; : 2,
+        &quot;key&quot; : {
+            &quot;_id&quot; : 1
+        },
+        &quot;name&quot; : &quot;_id_&quot;,
+        &quot;ns&quot; : &quot;test.users&quot;
+    }
+]
+</code></pre><p>20、全局索引查询：db.collectionName.find({$text: {$search:’aa’}})</p>
+<pre><code>db.users.find({$text: {$search:&apos;aa&apos;}})  // 在users的集合中查询含有&apos;aa&apos;的数据
+db.users.find({$text: {$search: &apos;aa bb cc&apos;}})   // 在users的集合中查询含有&apos;aa&apos;或&apos;bb&apos;或&apos;cc&apos;的数据
+db.users.find({$text: {$search: &apos;aa bb -cc&apos;}})  // 在users中查询包含&apos;aa&apos;或&apos;bb&apos;但不包含&apos;cc&apos;的数据
+db.users.find({$text: {$search:&apos;\&apos;aa\&apos; \&apos;bb\&apos;&apos;}})   // 在users中查询既包含aa也包含&apos;cc&apos;的数据
+</code></pre><p>21、全文索引相似度查询：</p>
+<pre><code>db.users.find({$text:{$search: &apos;aa&apos;}}, {score: {$meta:&apos;textScore&apos;}})    // 查询包含&apos;aa&apos;的数据，数据包含相似度的值
+db.users.find({$text: {$search: &apos;aa&apos;}},{score:{$meta: &apos;textScore&apos;}}).sort({score:{$meta: &apos;textScore&apos;}})     // 查询包含&apos;aa&apos;的数据,并对相似度进行排序，相似度越高，越靠前
+</code></pre><p>全文索引的限制：<br>    1）每次查询只能指定一个$text查询<br>    2）$text查询不能出现在$nor查询中<br>    3）查询中如果包含了$text，则hint（指定索引）不起作用<br>    4）全文索引不支持中文查询</p>
+<p>23、删除索引：db.collectionName.dropIndex(‘name’)   删除索引名为name的索引</p>
+<p>24、索引的属性：</p>
+<pre><code>1）指定索引名： db.collectionName.ensureIndex({&apos;x&apos;: 1}, {&apos;name&apos;: &apos;mm&apos;})  // 指定索引的名为 mm
+2) 唯一性：    db.collectionName.ensureIndex({&apos;x&apos;: 1}, {unique: true})  // 不允许插入键为x并值相同的数据
+3）稀疏性：    db.collectionName.ensureIndex({&apos;x&apos;: 1}, {&apos;sparse&apos;:true}) // 当插入的数据不含有x字段时，不为该条数据创建索引。默认 sparse：false。
+</code></pre><p>25、查询值存在某个字段的数据：</p>
+<pre><code>db.colleciontName.find({name: {$exists: true}})  // 查询存在name字段的数据
+</code></pre><p>26、地理位置索引：<br>    2d平面位置索引：</p>
+<pre><code>db.collectionName.ensureIndex({w: &apos;2d&apos;})
+db.collectionName.insert({w: [100, 80]})    // 插入经度为100，纬度为80的数据
+db.collectionName.find({w: {$near: [100, 80]}})     // 查询经度为100，纬度为80附近的点，最多返回100个改点附近的点
+db.collectionName.find({w: {$near: [100, 80], $maxDistance: 10}})   // 查询经度为100，纬度为80附近的点,但最大距离为10的点
+db.collectionName.find({w: {$geoWithin: {$box: [[x1,y1],[x2, y2]]}}})   // 查询左边界为x1,y1、右边界为x2,y2范围内的点
+db.collectionName.find({w: {$geoWithin: {$center: [[x1,y1],r]}}})       // 查询圆心为x1,y1，半径为r范围内的点
+db.collectionName.find({w: {$geoWithin: {$polygon: [[x1,y1],[x2, y2],[x3,y3]]}}})   // 查询点（x1, y1）(x2,y2) (x3, y3)组成的多边形内的点
+db.runCommand({geoNear:collectionName, near:[x,y], minDistance: num, MaxDistance: num, num: num})   // minDistance对2d无效
+</code></pre><p>   2dsphere位置索引</p>
+<pre><code>db.collectionName.ensureIndex({loc: &apos;2dsphere&apos;})
+db.collectionName.find( { loc :  { $near: { $geometry : { type : &quot;Point&quot;, coordinates : [ &lt;longitude&gt; , &lt;latitude&gt; ] },$maxDistance : &lt;distance in meters&gt;} } } )  
+</code></pre><p>27、导入json文件：</p>
+<pre><code>mongoimport -d test -c list --file /Users/admin/Desktop/list.json   往test数据库中的list集合导入json文件。该文件为json对象
+mongoimport -d test -c list --file /Users/admin/Desktop/list.json --jsonArray   往test数据库中的list集合导入json文件。该文件为json数组
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/10/13/mongodb基本指令/" data-id="cjo3q5gyf000p0xdnfkz5k6bd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/10/26/1px-边框/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          1px 边框
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/10/10/万能的this/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">万能的this</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react-js/">react js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/react-js/" style="font-size: 10px;">react js</a> <a href="/tags/数据库/" style="font-size: 15px;">数据库</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/10/31/mysql/">mysql</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/24/http/">http请求</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/17/对象/">对象</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/20/redux理解/">redux理解</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/15/reduce/">reduce</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Lerbron<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
